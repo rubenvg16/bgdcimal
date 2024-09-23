@@ -14,7 +14,7 @@ public class Negative {
         BigDecimal negatedValue = num.negate();
 
         System.out.println("Absolute Value: " + absoluteValue);  // Output: 123.456
-        System.out.println("Negated Value: " + negatedValue);    // Output: 123.456
+        System.out.println("Negated Value: " + negatedValue + num);    // Output: 123.456
     }
 
 }
