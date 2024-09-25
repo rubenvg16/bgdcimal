@@ -25,19 +25,26 @@ public class Ejercicio_3 {
         dividendo = BigDecimal.ONE.divide(dividendo, 10, RoundingMode.HALF_UP);
         dividendo = BigDecimal.ONE.subtract(dividendo);
         BigDecimal ptm = divisor.divide(dividendo, 10, RoundingMode.HALF_UP);
-
-        while (saldo.compareTo(BigDecimal.ZERO) >= 0){
+        System.out.println("Mes  Pago       Principal Interés   Balance" );
+        while (contador<=360){
             //Cálculo pago de intereses
             BigDecimal interes = saldo.multiply(r, MathContext.DECIMAL32);
 
             //Cálculo pago principal
             BigDecimal pago_principal= ptm.subtract(interes);
 
+            //Restamos el pago del mes al saldo
             saldo = saldo.subtract(pago_principal);
+
+            //Redondeamos los resultados
+            ptm = ptm.setScale(2, RoundingMode.HALF_UP);
+            pago_principal = pago_principal.setScale(2, RoundingMode.HALF_UP);
+            interes = interes.setScale(2, RoundingMode.HALF_UP);
+            saldo = saldo.setScale(2, RoundingMode.HALF_UP);
 
             System.out.println(contador + "    " + ptm + "    " + pago_principal + "    " + interes + "    " + saldo);
 
-
+            //Sumamos uno al contador
             contador++;
         }
 
